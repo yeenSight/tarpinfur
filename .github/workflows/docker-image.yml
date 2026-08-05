@@ -1,0 +1,55 @@
+name: Deploy tarpinfur to VPS
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write   # autorise push vers GHCR avec GITHUB_TOKEN
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set image name
+        run: echo "IMAGE=ghcr.io/${GITHUB_REPOSITORY,,}:latest" >> $GITHUB_ENV
+
+      - name: Login to GHCR (Actions token)
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
+
+      - name: Build and push
+        run: |
+          docker build -t $IMAGE .
+          docker push $IMAGE
+
+      - name: Deploy on VPS via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT }}
+          script: |
+            mkdir -p /opt/tarpinfur
+            cd /opt/tarpinfur
+
+            if [ ! -f docker-compose.yml ]; then
+              cat > docker-compose.yml <<'EOF'
+            services:
+              web:
+                image: ghcr.io/yeensight/tarpinfur:latest
+                container_name: tarpinfur-web
+                restart: always
+                ports:
+                  - "80:80"
+            EOF
+            fi
+
+            # sur le VPS, utilise un PAT classique stocké sur le serveur si package privé
+            docker compose pull
+            docker compose up -d
+            docker image prune -f
