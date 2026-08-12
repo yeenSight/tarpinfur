@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import telegramLogo from '../assets/network/telegram-svgrepo-com.svg'
 import discordLogo from '../assets/network/discord-icon.svg'
 import instagramLogo from '../assets/network/Instagram_logo_2022.svg'
@@ -7,12 +7,33 @@ import instagramLogo from '../assets/network/Instagram_logo_2022.svg'
 export default function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const location = useLocation()
+  const dropdownRef = useRef<HTMLDivElement>(null)
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen)
   }
 
   const isActive = (path: string) => location.pathname === path
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsDropdownOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [])
+
+  useEffect(() => {
+    setIsDropdownOpen(false)
+  }, [location.pathname])
 
   return (
     <header className="header">
@@ -33,8 +54,8 @@ export default function Header() {
             Events
           </Link>
           
-          <div className="dropdown">
-            <button 
+          <div className="dropdown" ref={dropdownRef}>
+            <button
               className="nav-link dropdown-toggle"
               onClick={toggleDropdown}
             >
