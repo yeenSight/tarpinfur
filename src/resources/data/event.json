@@ -1,0 +1,21 @@
+{
+  "events": [
+    {
+      "id": "soiree-jeux-2026-09-12-1900",
+      "title": "Soirée jeux de société",
+      "resume": "Lors du prochain furbar le 12 Septembre 2026, nous serons présents pour vous proposer des jeux de société.<br> Ils seront mis à disposition.",
+      "description": "Lors du prochain Furbar le 12 septembre, il sera mis à disposition par Tarpin Fur différents jeux de société. <br>Bien évidement il sera demandé de prendre soin des jeux. Et de prévenir Kelkun (ou la hyène) en cas d'accident. <br>Vous pourrez aussi demander à Kelkun de vous expliquer les règles et vous accompagner.<br><ul><li>TTMC : jeux de questions réponses</li><li>Top Ten : jeux d'ambiance fun</li><ul>",
+      "date": "2026-09-12",
+      "time": "19:00"
+    },
+    {
+      "id": "furbar-2026-09-12-1930",
+      "title": "Furbar !",
+      "image": "partnership/furbar.jpg",
+      "resume": "Rappel pour la prochaine date du Furbar qui sera le Samedi 12 septembre à 19h30 au MYBEERS de Montpellier",
+      "description": "Rappel pour la prochaine date du Furbar qui sera le Samedi 12 septembre à 19h30 au <br><a href='https://maps.app.goo.gl/1bBAGeMVysi6dGQRA'>MYBEERS</a><br>Nous espérons vous voir nombreux pour un moment de convivialité et de calme n'oubliez cependant pas votre carte pour les 10% de réductions sur les bières à pression<br><br><h3>Petit rappel des règles</h3><ul><li>Pas de Hood (tenue fétiches, etc)</li><li>Buvez avec modération</li><li>En cas de soucis vennez voir un organisateur</li><li>Amusez vous !</li></ul>",
+      "date": "2026-09-12",
+      "time": "19:00"
+    }
+  ]
+}
