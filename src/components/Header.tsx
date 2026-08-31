@@ -6,11 +6,17 @@ import instagramLogo from '../assets/network/Instagram_logo_2022.svg'
 
 export default function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+  const [isInfosOpen, setIsInfosOpen] = useState(false)
   const location = useLocation()
   const dropdownRef = useRef<HTMLDivElement>(null)
+  const infosRef = useRef<HTMLDivElement>(null)
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen)
+  }
+
+  const toggleInfos = () => {
+    setIsInfosOpen(!isInfosOpen)
   }
 
   const isActive = (path: string) => location.pathname === path
@@ -23,6 +29,12 @@ export default function Header() {
       ) {
         setIsDropdownOpen(false)
       }
+      if (
+        infosRef.current &&
+        !infosRef.current.contains(event.target as Node)
+      ) {
+        setIsInfosOpen(false)
+      }
     }
 
     document.addEventListener('mousedown', handleClickOutside)
@@ -33,6 +45,7 @@ export default function Header() {
 
   useEffect(() => {
     setIsDropdownOpen(false)
+    setIsInfosOpen(false)
   }, [location.pathname])
 
   return (
@@ -46,14 +59,34 @@ export default function Header() {
           >
             Accueil
           </Link>
-          
+
           <Link 
-            to="/event"
-            className={`nav-link ${isActive('/event') ? 'active' : ''}`}
+            to="/planning"
+            className={`nav-link ${isActive('/planning') ? 'active' : ''}`}
           >
-            Events
+            Planning
           </Link>
-          
+
+          <div className="dropdown" ref={infosRef}>
+            <button
+              className={`nav-link dropdown-toggle ${isActive('/association') || isActive('/regles') ? 'active' : ''}`}
+              onClick={toggleInfos}
+            >
+              Infos
+            </button>
+
+            {isInfosOpen && (
+              <div className="dropdown-menu">
+                <Link to="/association" className="dropdown-item">
+                  Association
+                </Link>
+                <Link to="/regles" className="dropdown-item">
+                  Règles
+                </Link>
+              </div>
+            )}
+          </div>
+
           <div className="dropdown" ref={dropdownRef}>
             <button
               className="nav-link dropdown-toggle"
