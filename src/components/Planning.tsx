@@ -8,6 +8,7 @@ type EventItem = {
   description: string;
   date: string;
   time?: string;
+  resume?: string;
 };
 
 const Planning: React.FC = () => {
@@ -35,7 +36,7 @@ const Planning: React.FC = () => {
                 <article className="plan-card">
                   <div className="plan-content">
                     <h3>{e.title}</h3>
-                    <div className="plan-text" dangerouslySetInnerHTML={{ __html: e.resume }} />
+                    {e.resume && <div className="plan-text" dangerouslySetInnerHTML={{ __html: e.resume }} />}
                   </div>
 
                   <div className="date-badge">
