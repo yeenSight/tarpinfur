@@ -1,8 +1,8 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
-import telegramLogo from '../assets/network/telegram-svgrepo-com.svg'
-import discordLogo from '../assets/network/discord-icon.svg'
-import instagramLogo from '../assets/network/Instagram_logo_2022.svg'
+import telegramLogo from '../../assets/network/telegram-svgrepo-com.svg'
+import discordLogo from '../../assets/network/discord-icon.svg'
+import instagramLogo from '../../assets/network/Instagram_logo_2022.svg'
 
 export default function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
@@ -82,6 +82,9 @@ export default function Header() {
                 </Link>
                 <Link to="/regles" className="dropdown-item">
                   Règles
+                </Link>
+                <Link to="/status" className="dropdown-item">
+                  Status
                 </Link>
               </div>
             )}
