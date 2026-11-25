@@ -1,6 +1,15 @@
 {
   "events": [
     {
+      "id": "TGS-2026-11-28-0900",
+      "title": "TGS",
+      "image": "mascotte.png",
+      "resume": "Présence de l'association Toulouse Fur (tlsfur) au TGS le 28 et 29 Novembre 2026",
+      "description": "Comme chaque année Toulouse Fur sera présent au TGS (Toulouse Game Show) le Samedi 28 et Dimanche 29 Novembre 2026 à Toulouse<br>Venez nous rencontrer sur notre stand pour discuter, jouer, ou simplement nous dire bonjour !<br><br>Nous vous attendons nombreux !",
+      "date": "2026-12-05",
+      "time": "19:00"
+    },
+    {
       "id": "furbar-2026-12-05-1900",
       "title": "Furbar !",
       "image": "partnership/furbar.jpg",
@@ -13,7 +22,7 @@
       "id": "meet-2026-12-09-1900",
       "title": "Soirée jeu !",
       "image": "mascotte.png",
-      "resume": "Une soirée jeu est prévue le Samedi 09 Décembre 2026 à 19h00 au bar \"Un Bar et Jivay\"",
+      "resume": "Une soirée jeu est prévue le Mercredi 09 Décembre 2026 à 19h00 au bar \"Un Bar et Jivay\"",
       "description": "Une soirée jeu est prévue le Samedi 09 Décembre 2026 à 19h00 au <br><a href='https://maps.app.goo.gl/KKF2esYxR1p5N2H9A'>bar et Jivay</a> à Montpellier<br>Les jeux seront choisis en fonction des envies et des niveaux de chacun dans la limite des jeux disponibles.<br>",
       "date": "2026-12-09",
       "time": "19:00"
